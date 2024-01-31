@@ -1,0 +1,49 @@
+.navbar{
+    background-color: $darkGray;
+   
+}
+.sel__category{
+    color: black;
+}
+.navbar {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar-toggler-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-dark .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+  }
+  
+  .navbar-dark .navbar-toggler-icon:focus,
+  .navbar-dark .navbar-toggler-icon:hover {
+    background-color: transparent;
+  }
+  
+  .navbar-toggler.collapsed .bi-list {
+    transform: rotate(0deg);
+  }
+  
+  .navbar-toggler:not(.collapsed) .bi-list {
+    transform: rotate(90deg);
+  }
+  
+  .navbar-nav .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .navbar-brand img {
+    transition: transform 0.5s ease;
+  }
+  
+  .navbar-brand:hover img {
+    transform: rotate(360deg);
+  }
+  
+
+.offcanvas{
+    background-color: $darkGray;
+}

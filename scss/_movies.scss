@@ -1,0 +1,77 @@
+.movies {
+    background-color: $darkGray;
+}
+
+.movies__list {
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.movies__item {
+    margin-top: 40px;
+}
+
+.movies__card {
+    width: 220px;
+    transition: opacity 0.5s ease;
+
+    img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    .card__info {
+        margin-top: 47px;
+        padding: 10px;
+    }
+}
+
+.modal-dialog {
+    max-width: 900px;
+}
+
+.modal-content {
+    background-color: $darkGray;
+}
+
+
+.modal {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .modal.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .movies__list li {
+    transition: transform 0.3s ease;
+  }
+  
+  .movies__list li:hover {
+    transform: scale(1.05);
+  }
+
+  .modal {
+    animation: bounceInModal 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+  
+  @keyframes bounceInModal {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+
+
