@@ -1,6 +1,7 @@
 let elMovList = document.querySelector('.movies__list')
 let partMovies = movies.slice(0, 100)
-fnRender(partMovies)
+let partMovies2 = partMovies.slice(0,10)
+fnRender(partMovies2)
 function fnRender(data) {
   let arrLocDataHeart = JSON.parse(window.localStorage.getItem('locdata'))
   elMovList.innerHTML = ''
@@ -8,7 +9,7 @@ function fnRender(data) {
     let newLi = document.createElement('li')
     newLi.classList = 'movies__item'
     newLi.innerHTML = `
-    <div class="movies__card" style="margin-top: 50px">
+    <div class="movies__card" style="margin-top: 50px ">
     <img src="https://i.ytimg.com/vi/${item.ytid}/hqdefault.jpg" alt="">
     <div class="card__info">
       <h3 class="text-light">${item.Title.toString().split("").splice(0, 12).join("")}</h3>
@@ -20,12 +21,13 @@ function fnRender(data) {
     <div class="d-flex align-items-center justify-content-between text-light">
      <button onclick="fnMoreInfo('${item.ytid}')" class="btn btn-warning" data-bs-toggle="modal"
       data-bs-target="#exampleModal">More</button><i onclick="fnAddLocData('${item.ytid}')" 
-      class="${(arrLocDataHeart && arrLocDataHeart.find((i)=>i.ytid == item.ytid)) ? "bi bi-heart-fill" : "bi bi-heart"}"></i>
+      class="${(arrLocDataHeart && arrLocDataHeart.find((i) => i.ytid == item.ytid)) ? "bi bi-heart-fill" : "bi bi-heart"}"></i>
       
     </div>
     </div>
   </div>
     `
+    
     elMovList.appendChild(newLi);
 
   });
@@ -107,8 +109,6 @@ function fnMoreInfo(id) {
   </div>
   `
 }
-
-
 let elFavMov = document.querySelector('.favourite__move')
 let locData = []
 function fnAddLocData(id) {
@@ -118,19 +118,17 @@ function fnAddLocData(id) {
   let item = partMovies.find(i => i.ytid == id)
   if (locData.find((i => i.ytid == item.ytid))) {
 
-    window.localStorage.setItem('locdata', JSON.stringify(locData.filter((k)=> k.ytid !== id)))
-  }else{
+    window.localStorage.setItem('locdata', JSON.stringify(locData.filter((k) => k.ytid !== id)))
+  } else {
     locData.push(item)
     window.localStorage.setItem('locdata', JSON.stringify(locData))
   }
   fnRender(partMovies)
 }
-
-
 function fnRenLoc() {
   elFavMov.innerHTML = ``
   let favouritMovie = JSON.parse(window.localStorage.getItem('locdata'))
-  favouritMovie.forEach((item)=>{
+  favouritMovie.forEach((item) => {
     let newLI = document.createElement('li')
     newLI.innerHTML = `
       <div class="border-1 d-flex align-items-center ">
@@ -145,12 +143,13 @@ function fnRenLoc() {
 fnRenLoc()
 
 
+
 function pauseVideo() {
   var youtubePlayer = document.getElementById('youtubePlayer');
   console.log(youtubePlayer);
-  setTimeout(()=>{
+  setTimeout(() => {
     youtubePlayer.innerHTML = ''
-  },500)
+  }, 500)
 }
 
 function deletFav() {
@@ -158,7 +157,27 @@ function deletFav() {
   fnRenLoc()
 }
 
+let count = 0
+function partPegenation(part) {
+  count = part
+  fnRender(partMovies.slice((part - 1) * 10, part * 10));
+}
 
-function countPegenation(count){
-  console.log(count);
+function fnPegenation(val) {
+  if (val == 'prev' && count >= 2) {
+    fnRender(partMovies.slice((count - 2) * 10, (count-1) * 10));
+    count = count - 1;
+  } else if (val == 'next') {
+    fnRender(partMovies.slice(count * 10, (count+1) * 10));
+    count = count + 1;
+  }
+}
+
+
+
+for (let i = 1; i <= partMovies.length / 10; i++) {
+  document.querySelector('.pagenation__inner').innerHTML += `
+  <li class="page-item"><button onclick="partPegenation(${i})"
+  class="page-link bg-dark text-light border-secondary">${i}</button></li>
+  `
 }

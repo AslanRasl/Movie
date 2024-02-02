@@ -11,11 +11,13 @@
   <link rel="stylesheet" href="./css/main.css">
   <title>Movie</title>
 </head>
+
 <body>
   <header class="header">
-    <nav  class="navbar navbar-expand-lg fixed-top d-flex align-items-center">>
+    <nav class="navbar navbar-expand-lg fixed-top d-flex align-items-center">>
       <div class="container">
-        <button onclick="fnRenLoc()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" class="bg-transparent border-0 me-4 fs-3 text-light">
+        <button onclick="fnRenLoc()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+          class="bg-transparent border-0 me-4 fs-3 text-light">
           <i class="bi bi-list"></i>
         </button>
         <a class="navbar-brand" href="#">
@@ -56,16 +58,17 @@
     </nav>
   </header>
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title text-light" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-    <button  type="button" class="btn-close text-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <ul class="offcanvas-body favourite__move">
-      
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+    aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title text-light" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+      <button type="button" class="btn-close text-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <ul class="offcanvas-body favourite__move">
+
     </ul>
     <button onclick="deletFav()" class="btn btn-warning">Delete all your favorite movies</button>
-</div>
+  </div>
   <section class="hero">
     <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -96,32 +99,34 @@
   </section>
   <section class="movies">
     <div class="container">
-
-      <nav aria-label="Page navigation example bg-dark">
-        <ul class="pagination">
-          <li class="page-item">
-            <button class="page-link bg-dark text-light border-secondary" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </button>
-          </li>
-          <li class="page-item"><button onclick="countPegenation(1)" class="page-link bg-dark text-light border-secondary" href="#">1</button></li>
-          <li class="page-item"><button onclick="countPegenation(2)" class="page-link bg-dark text-light border-secondary" href="#">2</button></li>
-          <li class="page-item"><button onclick="countPegenation(3)" class="page-link bg-dark text-light border-secondary" href="#">3</button></li>
-          <li class="page-item">
-            <button class="page-link bg-dark text-light border-secondary" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
       <ul class="movies__list">
 
       </ul>
-
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
 
         </div>
+      </div>
+      <div class="d-flex justify-content-center"> 
+        <nav aria-label="Page navigation example bg-dark">
+          <ul class="pagination">
+            <li class="page-item">
+              <button onclick="fnPegenation('prev')" class="page-link bg-dark text-light border-secondary"
+                aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </button>
+            </li>
+            <div class="d-flex pagenation__inner">
+            </div>
+            <li class="page-item">
+              <button onclick="fnPegenation('next')" class="page-link bg-dark text-light border-secondary"
+                aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
       </div>
   </section>
 </body>
